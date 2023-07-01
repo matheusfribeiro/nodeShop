@@ -1,4 +1,5 @@
 const fs = require('fs')
+import { Buffer } from 'node:buffer';
 
 const requestHandler = (req, res) => {
   const url = req.url;
