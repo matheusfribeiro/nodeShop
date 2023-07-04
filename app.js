@@ -1,8 +1,22 @@
-const http = require('http');
+const express = require('express')
+
 const port = 3000
 
-const routes = require('./routes')
+const app = express()
 
-const server = http.createServer(routes);
+app.get('/favicon.ico', (req, res) => res.status(204));
 
-server.listen(port, () => console.log(`Server is listening on port ${port}`));
+app.use((req, res, next) => {
+  console.log('in the middleware', req.url)
+  
+  next() // Allows the request to continue to the next middleware in line
+  
+  
+})
+
+app.use((req, res, next) => {
+  console.log('in another middleware', req.url)
+  res.send('<h1>test for echo</h1>')
+})
+
+app.listen(port, () => console.log(`Server is listening on port ${port}`));
