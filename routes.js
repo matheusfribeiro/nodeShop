@@ -1,5 +1,5 @@
 const fs = require('fs')
-import { Buffer } from 'node:buffer';
+
 
 const requestHandler = (req, res) => {
   const url = req.url;
@@ -11,6 +11,7 @@ const requestHandler = (req, res) => {
     res.write('</html>');
     return res.end();
   }
+  
   if (url === '/message' && method === 'POST') {
     const body = [];
     req.on('data', (chunk) => {
