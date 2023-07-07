@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 
 const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
-const pageNotFoundController = require('./controllers/404')
+const errorController = require('./controllers/404')
 
 const port = 3000
 const app = express()
@@ -20,7 +20,7 @@ app.get('/favicon.ico', (req, res) => res.status(204));
 app.use('/admin', adminRoutes)
 app.use(shopRoutes)
 
-app.use(pageNotFoundController.get404)
+app.use(errorController.get404)
 
 
 
