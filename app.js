@@ -2,8 +2,9 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 
-const adminData = require('./routes/admin')
+const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
+const pageNotFoundController = require('./controllers/404')
 
 const port = 3000
 const app = express()
@@ -16,13 +17,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/favicon.ico', (req, res) => res.status(204));
 
-app.use('/admin', adminData.routes)
-
+app.use('/admin', adminRoutes)
 app.use(shopRoutes)
 
-app.use((req, res, next) => {
-  res.status(404).render("page-not-found", { pageTitle: "Page Not Found" });
-})
+app.use(pageNotFoundController.get404)
 
 
 
