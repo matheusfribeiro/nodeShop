@@ -1,10 +1,11 @@
 const express = require('express')
+
 const path = require('path')
 const bodyParser = require('body-parser')
 
+const errorController = require('./controllers/404')
 const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
-const errorController = require('./controllers/404')
 
 const port = 3000
 const app = express()
