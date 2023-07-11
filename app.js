@@ -3,7 +3,7 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 
-const errorController = require('./controllers/404')
+const errorController = require('./controllers/error')
 const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
 
