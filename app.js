@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs')
 
 const path = require('path')
 const bodyParser = require('body-parser')
@@ -15,6 +16,22 @@ app.set('views', 'views')
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')))
+
+const p = path.join(
+  path.dirname(require.main.filename),
+  "data",
+  "products.json"
+);
+
+fs.readFile(p, (err, data) => {
+  if (data.length === 0) {
+    fs.writeFile(p, "[]", (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  }
+});
 
 app.get('/favicon.ico', (req, res) => res.status(204));
 
