@@ -24,7 +24,7 @@ const p = path.join(
 );
 
 fs.readFile(p, (err, data) => {
-  if (data.length === 0) {
+  if (data.length === 0 ) {
     fs.writeFile(p, "[]", (err) => {
       if (err) {
         console.log(err);
