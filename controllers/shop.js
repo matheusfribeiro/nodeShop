@@ -56,8 +56,6 @@ exports.getCart = (req, res, next) => {
   });
 };
 
-
-
 exports.postCart = (req, res, next) => {
   const prodId = req.body.productId
   Product.findById(prodId, (product => {
@@ -87,6 +85,3 @@ exports.getCheckout = (req, res, next) => {
     pageTitle: 'Checkout'
   })
 }
-
-
-
