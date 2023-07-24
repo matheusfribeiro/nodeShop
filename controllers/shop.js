@@ -2,13 +2,15 @@ const Product = require('../models/product')
 const Cart = require('../models/cart')
 
 exports.getProducts = (req, res, next) => {
-  Product.fetchAll(products => {
-    res.render('shop/product-list', {
-      prods: products,
-      pageTitle: 'Shop',
-      path: '/products',
-    });
-  });
+  Product.fetchAll()
+    .then(([rows, fieldData]) => {
+      res.render('shop/product-list', {
+        prods: rows,
+        pageTitle: 'Shop',
+        path: '/products',
+      });
+    })
+    .catch(err => console.log(err))
 };
 
 exports.getProduct = (req, res, next) => {
@@ -25,13 +27,16 @@ exports.getProduct = (req, res, next) => {
 }
 
 exports.getIndex = (req, res, next) => {
-  Product.fetchAll(products => {
-    res.render('shop/index', {
-      prods: products,
-      pageTitle: 'All Products',
-      path: '/',
-    });
-  });
+  Product.fetchAll()
+    .then(([rows, fieldData]) => {
+      res.render('shop/index', {
+        prods: rows,
+        pageTitle: 'All Products',
+        path: '/',
+      });
+    })
+    .catch(err => console.log(err))
+  
 }
 
 
@@ -64,7 +69,7 @@ exports.postCart = (req, res, next) => {
   res.redirect('/cart')
 }
 
-exports.postCarDeleteProduct = (req, res, next) => {
+exports.postCartDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId
   Product.findById(prodId, product => {
     Cart.deleteProduct(prodId, product.price)

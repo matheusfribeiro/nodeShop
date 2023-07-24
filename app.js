@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const errorController = require('./controllers/error')
 const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
+const db = require('./utils/database')
 
 const port = 3000
 const app = express()
