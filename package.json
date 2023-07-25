@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matheusfribeiro/nodeJs.git"
+    "url": "git+https://github.com/matheusfribeiro/nodeShop.git"
   },
   "author": "Matheus F. Ribeiro",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/matheusfribeiro/nodeJs/issues"
+    "url": "https://github.com/matheusfribeiro/nodeShop/issues"
   },
-  "homepage": "https://github.com/matheusfribeiro/nodeJs#readme",
+  "homepage": "https://github.com/matheusfribeiro/nodeShop#readme",
   "devDependencies": {
     "nodemon": "^2.0.22"
   },
@@ -24,8 +24,7 @@
     "body-parser": "^1.20.2",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "express-handlebars": "^7.0.7",
     "mysql2": "^3.5.2",
-    "pug": "^3.0.2"
+    "sequelize": "^6.32.1"
   }
 }
